@@ -24,4 +24,10 @@
         </ion-item>
     </ion-list>
     <button ion-button block (click)="loginAction()">Signin</button>
+    <button ion-button block (click)="siginUp()">Signup</button>
+    <ion-list>
+        <ion-item *ngFor="let user of users">
+            <ion-label> {{user.email}}</ion-label>
+        </ion-item>
+    </ion-list>
 </ion-content>
