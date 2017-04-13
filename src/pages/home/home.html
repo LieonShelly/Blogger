@@ -13,5 +13,9 @@
 </ion-header>
 
 <ion-content padding>
-
+    <ion-card *ngFor="let post of userPostsLists">
+        <ion-card-content>
+            <p> {{post.body}} </p>
+        </ion-card-content>
+    </ion-card>
 </ion-content>

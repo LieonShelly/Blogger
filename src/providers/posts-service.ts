@@ -38,4 +38,11 @@ private userPostsNode: any;
   updatePath['/user-posts/' + userId + "/" + newPostKey] = postBody;
   return this.fireRef.update(updatePath);
  }
+
+  listPosts() {
+   firebase.database().ref('posts').once('value').then(snapshot => {
+       console.log(snapshot.val());
+     });
+  }
+
 }

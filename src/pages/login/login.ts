@@ -17,8 +17,8 @@ import { HomePage } from '../home/home';
 })
 export class Login {
   // 属性要设置为any类型，否则不能被识别
-  public username: any;
-  public password: any;
+  public username: any = 'test@gmail.com';
+  public password: any = '123456';
   public users: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private userService: UserService, 

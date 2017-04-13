@@ -42,4 +42,9 @@ public userProfile: any;
   signInUser(email: string, password: string) {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
+
+   viewUser(userId: string) {
+    var userRef = this.userProfile.child(userId);
+    return userRef.on('value');
+  }
 }
