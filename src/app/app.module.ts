@@ -10,7 +10,8 @@ import { TabsPage } from '../pages/tabs/tabs';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { LoginModule } from '../pages/login/login.module';
-// import { UserService } from '../providers/user-service';
+import { PostAddModule } from '../pages/post-add/post-add.module';
+import { UserDetailModule } from '../pages/user-detail/user-detail.module'
 
 @NgModule({
   declarations: [
@@ -25,6 +26,8 @@ import { LoginModule } from '../pages/login/login.module';
     HttpModule,
     IonicModule.forRoot(MyApp),
     LoginModule,
+    PostAddModule,
+    UserDetailModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
