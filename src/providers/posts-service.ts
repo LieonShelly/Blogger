@@ -40,9 +40,6 @@ private userPostsNode: any;
  }
 
   listPosts() {
-   firebase.database().ref('posts').once('value').then(snapshot => {
-       console.log(snapshot.val());
-     });
+    return  firebase.database().ref('posts').once('value')
   }
-
 }

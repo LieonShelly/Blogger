@@ -14,8 +14,34 @@
 
 <ion-content padding>
     <ion-card *ngFor="let post of userPostsLists">
+        <ion-item>
+            <ion-avatar item-left>
+                <img src="{{userphoto}}">
+            </ion-avatar>
+            <h2>{{userDisplayName}}</h2>
+            <p>2pm today</p>
+        </ion-item>
         <ion-card-content>
             <p> {{post.body}} </p>
         </ion-card-content>
+        <ion-row>
+            <ion-col>
+                <button ion-button primary clear small>
+                    <ion-icon name="thumbs-up"></ion-icon>
+                    <div>12 Likes</div>
+                </button>
+            </ion-col>
+            <ion-col>
+                <button ion-button primary clear small>
+                    <ion-icon name="text"></ion-icon>
+                    <div>4 Comments</div>
+                </button>
+            </ion-col>
+            <ion-col center text-center>
+                <ion-note>
+                    11 ago
+                </ion-note>
+            </ion-col>
+        </ion-row>
     </ion-card>
 </ion-content>

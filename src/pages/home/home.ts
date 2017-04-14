@@ -11,7 +11,7 @@ import { UserService } from '../../providers/user-service';
   providers: [PostsService, UserService]
 })
 export class HomePage {
-  private userPostsLists: Array<any> = [];
+  private userPostsLists = [];
   private userId: any;
   private userDisplayName: any;
   private userEmail: any;
@@ -40,6 +40,16 @@ export class HomePage {
 
  listPosts() {
    var that = this;
-   this.postsService.listPosts();
+   this.postsService.listPosts().then(snapshot => {
+      let posts = snapshot;
+      that.userPostsLists.length = 0;
+      posts.forEach(post => { 
+        that.userPostsLists.push(post.val());
+        let userId = post.val().uid;
+        that.userService.viewUser(userId).then(user => {
+           that.userDisplayName = user.val().email;
+        });
+      });
+   })
  }
 }

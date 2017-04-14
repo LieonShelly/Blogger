@@ -45,6 +45,6 @@ public userProfile: any;
 
    viewUser(userId: string) {
     var userRef = this.userProfile.child(userId);
-    return userRef.on('value');
+    return userRef.once('value');
   }
 }
