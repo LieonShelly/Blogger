@@ -37,7 +37,10 @@ export class UserDetail {
   }
 
   logout() {
-    this.navCtrl.setRoot(Login)
+    
+    firebase.auth().signOut().then(() => {
+      this.navCtrl.setRoot(Login);
+    });
  }
 
   back() {

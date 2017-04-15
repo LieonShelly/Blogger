@@ -30,6 +30,9 @@ export class HomePage {
 
  redirectPostAddPage() {
   let postAdd = this.modalCtr.create(PostAdd);
+  postAdd.onDidDismiss(() => {
+    this.listPosts();
+  })
   postAdd.present();
  }
  
@@ -48,6 +51,7 @@ export class HomePage {
         let userId = post.val().uid;
         that.userService.viewUser(userId).then(user => {
            that.userDisplayName = user.val().email;
+           that.userphoto = user.val().photo;
         });
       });
    })
