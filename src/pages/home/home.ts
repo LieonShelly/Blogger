@@ -20,16 +20,15 @@ export class HomePage {
   private postsService: PostsService,
   private userService: UserService) {
     this.userId = firebase.auth().currentUser.uid;
+    this.listPosts()
   }
 
-  ionViewDidEnter() {
-  this.listPosts();
- }
 
  redirectPostAddPage() {
   let postAdd = this.modalCtr.create(PostAdd);
-  postAdd.onDidDismiss(() => {
+  postAdd.onWillDismiss(() => {
     this.listPosts();
+    
   })
   postAdd.present();
  }
@@ -41,17 +40,17 @@ export class HomePage {
 
  listPosts() {
    var that = this;
+  this.userPostsLists = [];
    this.postsService.listPosts().then(snapshot => {
       let posts = snapshot;
-      that.userPostsLists.length = 0;
       posts.forEach(post => { 
-        
         let userId = post.val().uid;
         that.userService.viewUser(userId).then(user => {
            let userDisplayName = user.val().email;
            let userphoto = user.val().photo;
            let newPost = new PostInfo(userDisplayName, userphoto, post.val());
            that.userPostsLists.push(newPost);
+           console.log('userDisplayName' + userDisplayName + ":" + post.val().body);
         });
       });
    })
