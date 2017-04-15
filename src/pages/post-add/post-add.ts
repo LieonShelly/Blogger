@@ -3,7 +3,7 @@ import { IonicPage, NavController, NavParams, ViewController, LoadingController,
 AlertController } from 'ionic-angular';
 import {  PostsService } from '../../providers/posts-service';
 import * as firebase from 'firebase';
-
+import { HomePage} from '../home/home';
 /**
  * Generated class for the PostAdd page.
  *
@@ -19,13 +19,15 @@ import * as firebase from 'firebase';
 export class PostAdd {
   public postBody: any;
   private userId: any;
+ public homePage: HomePage;
 
   constructor(public navCtrl: NavController,
    public navParams: NavParams,
    public viewCtr: ViewController,
    private loadCtr: LoadingController,
    private postsService: PostsService,
-   private alertCtrl: AlertController ) {
+   private alertCtrl: AlertController,
+   ) {
      this.userId = firebase.auth().currentUser.uid;
   }
 

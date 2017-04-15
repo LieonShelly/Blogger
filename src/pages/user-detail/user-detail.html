@@ -11,8 +11,9 @@
             <button ion-button (click)="back()">back</button>
         </ion-buttons>
         <ion-buttons end>
-            <button ion-button (click)="logout">
+            <button ion-button (click)="logout()">
               <ion-icon name="person"></ion-icon>
+              Logout
             </button>
         </ion-buttons>
     </ion-navbar>
@@ -21,5 +22,32 @@
 
 
 <ion-content padding>
+    <ion-card>
+        <!--  <ion-icon name="camera"></ion-icon> -->
+        <img src="{{userPhotoUrl}}" (tap)="showAlert()" style="margin: auto; margin-top: 20px; border-radius: 500px; height: 200px; width: 200px;" />
+        <ion-card-content>
+            <ion-card-title>
+                {{userDisplayName}}
+            </ion-card-title>
+            This is mt full profile about me details.
+        </ion-card-content>
+    </ion-card>
 
+    <ion-card>
+        <ion-card-header text-uppercase>
+            My details
+        </ion-card-header>
+        <ion-list>
+            <ion-item>
+                <ion-icon name="list"></ion-icon> 25 years
+            </ion-item>
+            <ion-item>
+                <ion-icon name="logo-buffer"></ion-icon> 7.6 feet
+            </ion-item>
+            <ion-item>
+                <ion-icon name="globe"></ion-icon> China
+            </ion-item>
+        </ion-list>
+    </ion-card>
+    <button ion-button danger fab><ion-icon name="mic"></ion-icon></button>
 </ion-content>

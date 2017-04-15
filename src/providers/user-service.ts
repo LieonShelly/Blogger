@@ -11,10 +11,12 @@ import *as firebase from 'firebase';
 @Injectable()
 export class UserService {
 public userProfile: any;
+public  storageRef: any;
 
   constructor(public http: Http) {
     console.log('Hello UserService Provider');
     this.userProfile = firebase.database().ref('blogger_users');
+    this.storageRef = firebase.storage().ref('images/');
 }
   
   /// 请求数据
@@ -47,4 +49,19 @@ public userProfile: any;
     var userRef = this.userProfile.child(userId);
     return userRef.once('value');
   }
+
+   uploadAvatar(file, userId, path) {
+      let that = this;
+       var metadata = {
+        'contentType': file.type
+      };
+
+        that.storageRef.child(path).putString(file, firebase.storage.StringFormat.DATA_URL, metadata).then(function(snapshot) {
+       console.log(snapshot.metadata);
+        var url = snapshot.downloadURL;
+        that.userProfile.child(userId).update({
+          photo: url
+        });
+      })
+    }
 }

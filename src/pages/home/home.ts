@@ -24,9 +24,9 @@ export class HomePage {
     this.userId = firebase.auth().currentUser.uid;
   }
 
-  ionViewDidLoad() {
-    this.listPosts();
-  }
+  ionViewDidEnter() {
+  this.listPosts();
+ }
 
  redirectPostAddPage() {
   let postAdd = this.modalCtr.create(PostAdd);
