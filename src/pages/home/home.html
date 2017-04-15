@@ -16,13 +16,13 @@
     <ion-card *ngFor="let post of userPostsLists">
         <ion-item>
             <ion-avatar item-left>
-                <img src="{{userphoto}}">
+                <img src="{{post.userPhoto}}">
             </ion-avatar>
-            <h2>{{userDisplayName}}</h2>
+            <h2>{{post.username}}</h2>
             <p>2pm today</p>
         </ion-item>
         <ion-card-content>
-            <p> {{post.body}} </p>
+            <p> {{post.post.body}} </p>
         </ion-card-content>
         <ion-row>
             <ion-col>

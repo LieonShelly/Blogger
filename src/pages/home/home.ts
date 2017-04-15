@@ -13,9 +13,7 @@ import { UserService } from '../../providers/user-service';
 export class HomePage {
   private userPostsLists = [];
   private userId: any;
-  private userDisplayName: any;
-  private userEmail: any;
-  private userphoto: any;
+  private userList = [];
 
   constructor(public navCtrl: NavController,
   private modalCtr: ModalController,
@@ -47,13 +45,28 @@ export class HomePage {
       let posts = snapshot;
       that.userPostsLists.length = 0;
       posts.forEach(post => { 
-        that.userPostsLists.push(post.val());
+        
         let userId = post.val().uid;
         that.userService.viewUser(userId).then(user => {
-           that.userDisplayName = user.val().email;
-           that.userphoto = user.val().photo;
+           let userDisplayName = user.val().email;
+           let userphoto = user.val().photo;
+           let newPost = new PostInfo(userDisplayName, userphoto, post.val());
+           that.userPostsLists.push(newPost);
         });
       });
    })
  }
+}
+ 
+class PostInfo {
+  public username:any;
+  public userPhoto: any;
+  public post: any;
+
+  constructor(name: any, photo: any, post: any) {
+    this.username = name;
+    this.userPhoto = photo;
+    this.post = post;
+}
+
 }
